@@ -1,0 +1,43 @@
+创建仓库
+
+
+//创建一个仓库learngit
+$ mkdir learngit     
+//跳转至仓库learngit 
+$ cd learngit
+//查看仓库当前路径
+$ pwd
+/Users/michael/learngit
+
+
+//将目录变成Git可以管理的仓库
+git init
+//测试
+编写txt文件readme.txt将其放入仓库中
+//将文件添加到仓库
+git add readme.txt
+//将文件提交到仓库
+//-m后面输入的是本次提交的说明
+git commit -m "wrote a readme file"
+
+
+//改写文件readme.txt
+//查看仓库文件状态
+git status
+//查看某一文件更改的具体内容
+git diff readme.txt
+//提交修改两步
+git add readme.txt
+git commit -m"change test"
+
+
+//查看修改历史记录
+git log
+//查看简要修改历史记录
+git log --pretty=oneline
+//回退文件历史版本，HEAD指最新提交的那一次,HEAD^指最新提交之前的一次，同理，HEAD^^指上上上次
+git reset --hard HEAD^
+//若要回退至原来最新版本,需要在前面的log中找到之前最新提交那次的版本号，复制其版本号前数位（确保唯一即可）
+git reset --hard 8e57b77
+//若无发寻得版本号,命令历史记录可通过使用过的命令查看版本号
+git reflog
