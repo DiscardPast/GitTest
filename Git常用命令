@@ -41,3 +41,88 @@ git reset --hard HEAD^
 git reset --hard 8e57b77
 //若无发寻得版本号,命令历史记录可通过使用过的命令查看版本号
 git reflog
+
+
+//git是跟踪修改的,修改几次,就需要使用几次git add,每一次修改在执行git add之后才会添加修改到暂存区
+//撤销工作区上一次修改的全部内容，让这个文件回到最近一次git commit或git add时的状态。
+//两种情况
+//1.一种是readme.txt自修改后还没有被放到暂存区，撤销修改就回到和版本库一模一样的状态。
+git checkout -- readme.txt
+//2.一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+//git reset命令既可以回退版本，也可以把暂存区的修改推到工作区。当我们用HEAD时，便是最新版本
+git reset HEAD readme.txt
+//场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
+//场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。
+//场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
+
+
+//删除文件(工作区)
+rm newtxt
+//删除文件(暂存区)
+git rm newtxt
+//删错工作区文件，但文件还在暂存区未提交，需要恢复
+git checkout -- newtxt
+
+
+//创建SSH key
+ssh-keygen -t rsa -C "DiscardPast@yeah.net"
+//id_rsa私钥,id_rsa.pub公钥
+
+
+//将github仓库与本地仓库关联
+git remote add origin git@github.com:DiscardPast/GitTest.git
+//将本地库内容发送到远程库
+git push -u origin master
+
+
+//克隆远程库本地库
+git clone git@github.com:DiscardPast/MyRepository.git
+
+
+//创建并且换到新的分支dev
+git checkout -b dev
+//上一条命令相当于下面两条命令的
+git branch dev
+git checkout dev
+//查看当前分支
+git branch
+//切换到master分支
+git checkout master
+//将dev分支的工作成果合并至master分支
+git merge dev
+//删除dev分支
+git branch -d dev
+
+
+//当Git无法自动合并分支时，就收先要解决冲突.冲突解决后,再提交,合并完成.
+//查看分支合并图
+git log --graph
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
